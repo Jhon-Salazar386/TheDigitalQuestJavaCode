@@ -1,4 +1,4 @@
-package users;
+package funciones;
 import java.util.Scanner;
 
 public class GestionCiudad {
@@ -15,9 +15,9 @@ public class GestionCiudad {
     	
     	int ciudadOption = 0;
 
-        // Menú de gestión de ciudades
+        //Menú de gestión de ciudades
         while (ciudadOption != 5) {
-            System.out.println("\n--- GESTIÓN DE CIUDADES ---");
+            System.out.println("--- GESTIÓN DE CIUDADES ---");
             System.out.println("1 - Añadir ciudad");
             System.out.println("2 - Ver ciudad");
             System.out.println("3 - Editar ciudad");

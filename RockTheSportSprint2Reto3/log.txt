@@ -1,0 +1,30 @@
+
+Se ha conectado el programa con la base de datos correctamente
+
+Se ha conectado el programa con la base de datos correctamente
+
+Insertado deportista con ID 12345678A
+
+Se ha consultado el listado de deportistas
+
+Se ha buscado al deportista con el dni 12345678A
+
+Se actualizo el email del deportista con el dni 12345678A a Mepicalacola@gmail.com
+
+Se ha buscado al deportista con el dni 12345678A
+
+Se ha conectado el programa con la base de datos correctamente
+
+Se ha conectado el programa con la base de datos correctamente
+
+Se ha conectado el programa con la base de datos correctamente
+
+Se ha conectado el programa con la base de datos correctamente
+
+Se ha conectado el programa con la base de datos correctamente
+
+Se ha conectado el programa con la base de datos correctamente
+
+Listado de eventos deportivos
+
+Se a realizado una busqueda del evento Boxeo

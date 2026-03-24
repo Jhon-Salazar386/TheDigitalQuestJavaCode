@@ -1,4 +1,4 @@
-package users;
+package funciones;
 import java.util.Scanner;
 
 public class Registro{

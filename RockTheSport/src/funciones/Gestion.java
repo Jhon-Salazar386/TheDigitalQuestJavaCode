@@ -1,4 +1,4 @@
-package users;
+package funciones;
 import java.util.Scanner;
 
 
@@ -16,10 +16,11 @@ public class Gestion {
             System.out.println("3 - Gestión de inscripciones");
             System.out.println("4 - Gestión de ciudades");
             System.out.println("5 - Cerrar sesión");
+            System.out.println("6 - Probar funciones de prueba");
             System.out.print("Opción: ");
 
             option = org.nextInt();
-            org.nextLine(); // Limpieza del buffer
+            org.nextLine(); //Limpieza del buffer
 
             // Según la opción elegida, se llama a la clase correspondiente
             switch (option) {
@@ -47,9 +48,8 @@ public class Gestion {
                     // Opción no válida
                     System.out.println("Opción no válida, intenta de nuevo.");
             
-                }
             }
-
+        }
     }
     public static boolean Confirm() {
         String answer;
