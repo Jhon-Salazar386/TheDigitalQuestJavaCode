@@ -21,13 +21,8 @@ public class VistaInscripcion {
         boolean exit = false;
 
         do {
-            System.out.println("--- GESTIÓN INSCRIPCIONES ---");
-            System.out.println("1 - Insertar inscripción");
-            System.out.println("2 - Mostrar inscripciones");
-            System.out.println("3 - Eliminar inscripción");
-            System.out.println("4 - Contador de inscripciones");
-            System.out.println("0 - Salir");
-            System.out.print("Elige una opción: ");
+
+        	mostrarMenu();
 
             opcion = EntradaDatos.leerEntero();
 
@@ -54,12 +49,19 @@ public class VistaInscripcion {
 
         } while (!exit);
     }
+    
+    private void mostrarMenu() {
+        System.out.println("--- GESTIÓN INSCRIPCIONES ---");
+        System.out.println("1 - Insertar inscripción");
+        System.out.println("2 - Mostrar inscripciones");
+        System.out.println("3 - Eliminar inscripción");
+        System.out.println("4 - Contador de inscripciones");
+        System.out.println("0 - Salir");
+        System.out.print("Elige una opción: ");
+    }
 
     public void insertarInscripcion() {
         try {
-
-            System.out.print("Fecha inscripción (YYYY-MM-DD): ");
-            Date fecha = Date.valueOf(EntradaDatos.leerTexto());
 
             System.out.print("DNI del deportista: ");
             String dni = EntradaDatos.leerTexto();
@@ -67,11 +69,9 @@ public class VistaInscripcion {
             System.out.print("ID de la edición: ");
             int idEdicion = EntradaDatos.leerEntero();
             
-            Inscripcion ins = new Inscripcion(fecha, dni, idEdicion);
+            Inscripcion ins = new Inscripcion(new Date(System.currentTimeMillis()), dni, idEdicion);
 
-            gi.insertar(ins);
-
-            System.out.println("Inscripcion insertada correctamente");
+            System.out.println(gi.insertar(ins));
 
         } catch (SQLException e) {
             System.out.println("Error SQL al insertar inscripción: " + e.getMessage());
