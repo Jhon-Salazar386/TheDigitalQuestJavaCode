@@ -1,4 +1,5 @@
 package view;
+
 import java.io.IOException;
 import log.FicheroLog;
 import util.*;
@@ -9,25 +10,19 @@ public class VistaOrganizador {
 	private VistaDeportista vd = new VistaDeportista(new GestionDeportistas());
 	private VistaInscripcion vi = new VistaInscripcion(new GestionInscripcion());
 	private VistaEventoDeportivo vde = new VistaEventoDeportivo(new GestionEventoDeportivo());
-	
-	public void menuOrganizador() throws IOException{
-		
+
+	public void menuOrganizador() throws IOException {
+
 		boolean exit = false;
 		int opcion = -1;
-		
+
 		do {
-			System.out.println("--- MENU DE ORGANIZADOR ---");
-			System.out.println("1 - Deportistas");
-			System.out.println("2 - Eventos deportivos");
-			System.out.println("3 - Inscripciones");
-			System.out.println("4 - Ciudad");
-			System.out.println("5 - Leer registros");
-			System.out.println("0 - Salir");
-			System.out.println("Elige una opcion: ");
 			
+			mostrarMenu();
+
 			opcion = EntradaDatos.leerEntero();
-			
-			switch(opcion) {
+
+			switch (opcion) {
 			case 1:
 				vd.menuDeportistas();
 				break;
@@ -50,20 +45,31 @@ public class VistaOrganizador {
 			default:
 				System.out.println("Opcion no valida");
 			}
-			
-		}while(!exit);
+
+		} while (!exit);
 	}
 	
-	private static void mostrarRegistro() throws IOException{
-		
+	private void mostrarMenu() {
+		System.out.println("--- MENU DE ORGANIZADOR ---");
+		System.out.println("1 - Deportistas");
+		System.out.println("2 - Eventos deportivos");
+		System.out.println("3 - Inscripciones");
+		System.out.println("4 - Ciudad");
+		System.out.println("5 - Leer registros");
+		System.out.println("0 - Salir");
+		System.out.println("Elige una opcion: ");
+	}
+
+	private static void mostrarRegistro() throws IOException {
+
 		String contenido = FicheroLog.leerLog();
-		
-		if(contenido == null || contenido == "") {
+
+		if (contenido == null || contenido == "") {
 			System.out.println("No hay registros en el log");
 		}
-		
+
 		System.out.println(contenido);
-		
+
 	}
-	
+
 }

@@ -18,11 +18,8 @@ public class VistaGeneral {
 		int opcion = -1;
 		
 		do {
-			System.out.println("--- MENU GENERAL ---");
-			System.out.println("1 - Usuario");
-			System.out.println("2 - Organizador");
-			System.out.println("0 - Salir");
-			System.out.println("Elige una opcion: ");
+
+			mostrarMenu();
 			
 			opcion = EntradaDatos.leerEntero();
 			
@@ -42,5 +39,13 @@ public class VistaGeneral {
 			}
 			
 		}while(!exit);
+	}
+	
+	private void mostrarMenu() {
+		System.out.println("--- MENU GENERAL ---");
+		System.out.println("1 - Usuario");
+		System.out.println("2 - Organizador");
+		System.out.println("0 - Salir");
+		System.out.println("Elige una opcion: ");
 	}
 }

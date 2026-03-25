@@ -22,17 +22,9 @@ public class VistaEventoDeportivo {
         boolean exit = false;
 
         do {
-            System.out.println("--- GESTION EVENTOS DEPORTIVOS ---");
-            System.out.println("1 - Insertar evento individual");
-            System.out.println("2 - Insertar evento grupal");
-            System.out.println("3 - Mostrar eventos");
-            System.out.println("4 - Buscar evento por tipo");
-            System.out.println("5 - Modificar descripcion");
-            System.out.println("6 - Eliminar evento");
-            System.out.println("7 - Contador de eventos");
-            System.out.println("0 - Salir");
-            System.out.print("Elige una opción: ");
 
+        	mostrarMenu();
+        	
             opcion = EntradaDatos.leerEntero();
 
             switch (opcion) {
@@ -66,6 +58,20 @@ public class VistaEventoDeportivo {
             }
 
         } while (!exit);
+    }
+    
+    private void mostrarMenu() {
+        System.out.println("--- GESTION EVENTOS DEPORTIVOS ---");
+        System.out.println("1 - Insertar evento individual");
+        System.out.println("2 - Insertar evento grupal");
+        System.out.println("3 - Mostrar eventos");
+        System.out.println("4 - Buscar evento por tipo");
+        System.out.println("5 - Modificar descripcion");
+        System.out.println("6 - Eliminar evento");
+        System.out.println("7 - Contador de eventos");
+        System.out.println("0 - Salir");
+        System.out.print("Elige una opción: ");
+
     }
 
     public void insertarEventoIndividual() {

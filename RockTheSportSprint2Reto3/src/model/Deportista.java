@@ -16,12 +16,13 @@ public class Deportista {
 	private String email;
 	private String telefono;
 	public static int contadorDeportistas;
-	
-	public Deportista(){
-		
+
+	public Deportista() {
+		contadorDeportistas++;
 	}
-	
-	public Deportista(String dni, String nombre, String apellido, String genero, Date fechaNac, String ciudadNac,String email, String telefono) {
+
+	public Deportista(String dni, String nombre, String apellido, String genero, Date fechaNac, String ciudadNac,
+			String email, String telefono) {
 		setDni(dni);
 		setNombre(nombre);
 		setApellido(apellido);
@@ -38,19 +39,19 @@ public class Deportista {
 	}
 
 	public void setDni(String dni) {
-		
-		if(dni.isBlank()) {
+
+		if (dni.isBlank()) {
 			throw new IllegalArgumentException("El DNI no puede estar vacio");
 		}
-		
+
 		if (dni.length() != 9) {
-		    throw new IllegalArgumentException("El DNI debe tener 9 caracteres");
+			throw new IllegalArgumentException("El DNI debe tener 9 caracteres");
 		}
-	
-		if (!dni.matches("^[a-zA-Z0-9 ]+$")) {
-			throw new IllegalArgumentException("El DNI no puede tener caracteres especiales");
+
+		if (dni == null || !dni.matches("^\\d{8}[A-Za-z]$")) {
+		    throw new IllegalArgumentException("Formato de DNI inválido");
 		}
-		
+
 		this.dni = dni;
 	}
 
@@ -59,11 +60,11 @@ public class Deportista {
 	}
 
 	public void setNombre(String nombre) {
-		
-		if(nombre.isBlank()) {
+
+		if (nombre.isBlank()) {
 			throw new IllegalArgumentException("El nombre no puede estar vacio");
 		}
-		
+
 		this.nombre = nombre;
 	}
 
@@ -72,11 +73,11 @@ public class Deportista {
 	}
 
 	public void setApellido(String apellido) {
-		
-		if(apellido.isBlank()) {
+
+		if (apellido.isBlank()) {
 			throw new IllegalArgumentException("El apellido no puede estar vacio");
 		}
-		
+
 		this.apellido = apellido;
 	}
 
@@ -98,11 +99,11 @@ public class Deportista {
 	}
 
 	public void setFechaNac(Date fechaNac) {
-		
-		if(fechaNac == null) {
+
+		if (fechaNac == null) {
 			throw new IllegalArgumentException("Se debe de ingresar tu fecha de nacimiento");
 		}
-		
+
 		this.fechaNac = fechaNac;
 	}
 
@@ -110,12 +111,12 @@ public class Deportista {
 		return ciudadNac;
 	}
 
-	public void setCiudadNac(String ciudadNac) {	
-		
-		if(!ciudadNac.matches("^[a-zA-Z0-9 ]+$")) {
+	public void setCiudadNac(String ciudadNac) {
+
+		if (!ciudadNac.matches("^[a-zA-Z0-9 ]+$")) {
 			throw new IllegalArgumentException("El nombre de la ciudad no puede tener caracteres especiales");
 		}
-		
+
 		this.ciudadNac = ciudadNac;
 	}
 
@@ -132,7 +133,6 @@ public class Deportista {
 		this.email = email;
 	}
 
-
 	public String getTelefono() {
 		return telefono;
 	}
@@ -146,27 +146,31 @@ public class Deportista {
 		this.telefono = telefono;
 	}
 
-	
 	public String toString() {
-		return "\n Dni=" + dni 
-				+ "\n Nombre=" + nombre 
-				+ "\n Apellido=" + apellido 
-				+ "\n Genero=" + genero
-				+ "\n FechaNac=" + fechaNac 
-				+ "\n CiudadNac=" + ciudadNac 
-				+ "\n Email=" + email 
-				+ "\n Telefono=" + telefono;
+		return "\n Dni=" + dni +
+				"\n Nombre=" + nombre +
+				"\n Apellido=" + apellido +
+				"\n Genero=" + genero +
+				"\n FechaNac=" + fechaNac +
+				"\n CiudadNac=" + ciudadNac +
+				"\n Email=" + email +
+				"\n Telefono=" + telefono;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
-	    if (this == obj) return true;
-	    if (obj == null || getClass() != obj.getClass()) return false;
-
-	    Deportista other = (Deportista) obj;
-	    return Objects.equals(dni, other.dni);
+		if (this == obj) {
+			return true;
+		}
+			
+		if (obj == null || getClass() != obj.getClass()) {
+			return false;
+		}
+			
+		Deportista other = (Deportista) obj;
+		return Objects.equals(dni, other.dni);
 	}
-	
+
 	/**
 	 * @override
 	 */

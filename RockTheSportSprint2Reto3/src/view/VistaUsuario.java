@@ -25,14 +25,16 @@ public class VistaUsuario {
     public void menuUsuarios() {
 
         int opcion = 0;
+        boolean exit = false;
         
         Deportista usuario = null;
         
         ArrayList<Inscripcion> misInscripciones = new ArrayList<>();
 
-        while (opcion != 6) {
+        do {
 
             mostrarMenu();
+            
             opcion = EntradaDatos.leerEntero();
 
             switch (opcion) {
@@ -54,13 +56,14 @@ public class VistaUsuario {
                 case 6:
                     verMisInscripciones(misInscripciones);
                     break;
-                case 7:
+                case 0:
                     System.out.println("Saliendo...");
+                    exit = true;
                     break;
                 default:
                     System.out.println("Opción no válida.");
             }
-        }
+        } while(!exit);
     }
 
     private void mostrarMenu() {
@@ -219,15 +222,11 @@ public class VistaUsuario {
 
             if (confirm.equalsIgnoreCase("s")) {
 
-                Date fecha = new Date(System.currentTimeMillis());
-
-                Inscripcion ins = new Inscripcion(fecha, usuario.getDni(), idEvento);
+                Inscripcion ins = new Inscripcion(new Date(System.currentTimeMillis()), usuario.getDni(), idEvento);
                 
-                inscripciones.insertar(ins);
+                System.out.println(inscripciones.insertar(ins));
                 
                 misInscripciones.add(ins);
-
-                System.out.println("Inscripción realizada correctamente.");
             }
 
         } catch (SQLException e) {
