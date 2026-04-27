@@ -1,9 +1,11 @@
 package view;
 
-import util.EntradaDatos;
-import util.GestionInscripcion;
 import model.Inscripcion;
 import java.util.ArrayList;
+
+import controller.EntradaDatos;
+import dao.GestionInscripcion;
+
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;

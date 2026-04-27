@@ -3,8 +3,12 @@ package view;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import controller.*;
+import dao.GestionCiudades;
+import dao.GestionDeportistas;
+import dao.GestionEventoDeportivo;
+import dao.GestionInscripcion;
 import log.FicheroLog;
-import util.*;
 
 public class VistaOrganizador {
 

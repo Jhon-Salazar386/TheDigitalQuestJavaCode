@@ -5,8 +5,8 @@ import model.Ciudad;
 import java.io.*;
 import java.sql.*;
 
-import util.EntradaDatos;
-import util.GestionCiudades;
+import controller.EntradaDatos;
+import dao.GestionCiudades;
 
 public class VistaCiudad {
 

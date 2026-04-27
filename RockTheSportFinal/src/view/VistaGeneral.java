@@ -3,7 +3,11 @@ package view;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import util.*;
+import controller.*;
+import dao.GestionCiudades;
+import dao.GestionDeportistas;
+import dao.GestionEventoDeportivo;
+import dao.GestionInscripcion;
 
 public class VistaGeneral {
 

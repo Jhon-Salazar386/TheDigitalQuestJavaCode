@@ -1,12 +1,18 @@
 package view;
 
 import java.util.ArrayList;
+
+import controller.*;
+import dao.GestionCiudades;
+import dao.GestionDeportistas;
+import dao.GestionEventoDeportivo;
+import dao.GestionInscripcion;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Date;
 
 import model.*;
-import util.*;
 
 public class VistaUsuario {
 

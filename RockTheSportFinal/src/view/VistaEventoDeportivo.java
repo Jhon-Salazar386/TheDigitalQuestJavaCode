@@ -1,12 +1,13 @@
 package view;
 
 import model.*;
-import util.EntradaDatos;
-import util.GestionEventoDeportivo;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import controller.EntradaDatos;
+import dao.GestionEventoDeportivo;
 
 public class VistaEventoDeportivo {
 

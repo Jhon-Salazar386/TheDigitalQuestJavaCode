@@ -1,9 +1,11 @@
 package view;
 
-import util.EntradaDatos;
-import util.GestionDeportistas;
 import model.Deportista;
 import java.util.ArrayList;
+
+import controller.EntradaDatos;
+import dao.GestionDeportistas;
+
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
