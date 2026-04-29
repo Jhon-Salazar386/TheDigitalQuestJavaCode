@@ -7,7 +7,7 @@ import db.Conector;
 import log.FicheroLog;
 import model.Edicion;
 
-public class GestionEdiciones {
+public class EdicionDao {
 
 	// Se encarga de agregar una nueva edicion a la base de datos
 	public void agregarEdicion(Edicion edicion) throws SQLException, IOException {

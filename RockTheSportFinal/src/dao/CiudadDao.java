@@ -1,4 +1,4 @@
-package util;
+package dao;
 
 import java.io.*;
 import java.sql.*;
@@ -7,7 +7,7 @@ import db.Conector;
 import log.FicheroLog;
 import model.Ciudad;
 
-public class GestionCiudades {
+public class CiudadDao {
 
 	// Se encarga de agregar una nueva ciudad a la base de datos
 	public void agregarCiudad(Ciudad ciudad) throws SQLException, IOException {

@@ -2,13 +2,13 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
-import model.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
 import javax.swing.*;
 
+import model.Edicion;
+
 public class UserView extends JFrame {
-	
+
 	private DefaultListModel<Edicion> modeloEdicion;
 	private JList<Edicion> listaEdiciones;
 	private JButton botonBuscar;
@@ -19,74 +19,75 @@ public class UserView extends JFrame {
 	public UserView() {
 
 		setTitle("RockTheSport user");
-		setSize(528, 307);
-		getContentPane().setLayout(null);
+		setSize(606, 368);
 		setResizable(false);
+		getContentPane().setLayout(null);
 
+		// Header
 		JPanel header = new JPanel();
-		header.setBounds(0, 0, 511, 29);
+		header.setBounds(0, 0, 590, 29);
 		header.setBackground(new Color(34, 162, 210));
 		header.setLayout(new BoxLayout(header, BoxLayout.X_AXIS));
 		getContentPane().add(header);
 
-		JLabel rockTheSportIcon = new JLabel("");
-		rockTheSportIcon.setIcon(new ImageIcon("C:\\Users\\Jhond\\Downloads\\LogoRTS (1).png"));
-		header.add(rockTheSportIcon);
-
-		JLabel headerTitle = new JLabel("RockTheSport user manager");
-		headerTitle.setForeground(new Color(255, 255, 255));
-		headerTitle.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
+		JLabel headerTitle = new JLabel(" RockTheSport user manager");
+		headerTitle.setForeground(Color.WHITE);
+		headerTitle.setFont(new Font("Arial", Font.BOLD, 15));
 		header.add(headerTitle);
 
+		// Panel de botones
 		JPanel userButtonsPanel = new JPanel();
+		userButtonsPanel.setBounds(439, 28, 151, 301);
 		userButtonsPanel.setBackground(new Color(251, 253, 255));
-		userButtonsPanel.setBounds(397, 28, 114, 234);
 		userButtonsPanel.setLayout(null);
 		getContentPane().add(userButtonsPanel);
 
 		JLabel buttonsPaneLabel = new JLabel("Opciones");
-		buttonsPaneLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		buttonsPaneLabel.setBounds(10, 11, 132, 14);
 		buttonsPaneLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		buttonsPaneLabel.setBounds(6, 11, 101, 14);
+		buttonsPaneLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		userButtonsPanel.add(buttonsPaneLabel);
 
+		// Botones
 		botonBuscar = new JButton("Buscar edicion");
-		botonBuscar.setBounds(6, 36, 101, 25);
+		botonBuscar.setFont(new Font("Arial", Font.BOLD, 13));
+		botonBuscar.setBounds(10, 36, 132, 25);
 		userButtonsPanel.add(botonBuscar);
 
-		botonMisInscripciones = new JButton("Inscripciones");
-		botonMisInscripciones.setBounds(6, 70, 101, 25);
+		botonMisInscripciones = new JButton("Mis Inscripciones");
+		botonMisInscripciones.setFont(new Font("Arial", Font.BOLD, 11));
+		botonMisInscripciones.setBounds(10, 72, 132, 25);
 		userButtonsPanel.add(botonMisInscripciones);
 
-		botonRegistrarse = new JButton("Registrarse");
-		botonRegistrarse.setBounds(6, 104, 101, 25);
+		botonRegistrarse = new JButton("Crear cuenta");
+		botonRegistrarse.setFont(new Font("Arial", Font.BOLD, 13));
+		botonRegistrarse.setBounds(10, 108, 132, 25);
 		userButtonsPanel.add(botonRegistrarse);
 
 		botonSalir = new JButton("Salir");
-		botonSalir.setBounds(6, 199, 101, 25);
+		botonSalir.setFont(new Font("Arial", Font.BOLD, 13));
+		botonSalir.setBounds(20, 265, 112, 25);
 		userButtonsPanel.add(botonSalir);
 
+		// Listado de ediciones
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 40, 377, 222);
+		scrollPane.setBounds(10, 40, 417, 278);
 		getContentPane().add(scrollPane);
 
+		// Encabezado para la lista
 		JLabel listLabel = new JLabel("Ediciones");
 		listLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		listLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		listLabel.setFont(new Font("Arial", Font.BOLD, 14));
 		scrollPane.setColumnHeaderView(listLabel);
-		
+
 		modeloEdicion = new DefaultListModel<>();
 
 		listaEdiciones = new JList<>(modeloEdicion);
 		listaEdiciones.setBackground(new Color(251, 253, 255));
 		listaEdiciones.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(listaEdiciones);
-		
-		setVisible(true);
-		
+
 	}
-	
-	
 
 	public DefaultListModel<Edicion> getModeloEdicion() {
 		return modeloEdicion;
@@ -111,5 +112,4 @@ public class UserView extends JFrame {
 	public JButton getBotonSalir() {
 		return botonSalir;
 	}
-	
 }

@@ -7,7 +7,7 @@ import java.io.*;
 import db.Conector;
 import log.FicheroLog;
 
-public class GestionDeportistas {
+public class DeportistaDao {
 
 	// Inserta un deportista en la base de datos
 	public void insertar(Deportista d) throws SQLException, IOException {

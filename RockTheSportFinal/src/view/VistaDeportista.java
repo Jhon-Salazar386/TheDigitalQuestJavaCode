@@ -1,10 +1,11 @@
 package view;
 
 import model.Deportista;
+import util.EntradaDatos;
+
 import java.util.ArrayList;
 
-import controller.EntradaDatos;
-import dao.GestionDeportistas;
+import dao.DeportistaDao;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -12,9 +13,9 @@ import java.sql.SQLException;
 
 public class VistaDeportista {
 
-	private GestionDeportistas gestionDeportistas;
+	private DeportistaDao gestionDeportistas;
 
-	public VistaDeportista(GestionDeportistas gestionDeportistas) {
+	public VistaDeportista(DeportistaDao gestionDeportistas) {
 		this.gestionDeportistas = gestionDeportistas;
 	}
 

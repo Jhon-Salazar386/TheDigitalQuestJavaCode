@@ -1,10 +1,11 @@
 package view;
 
 import model.Inscripcion;
+import util.EntradaDatos;
+
 import java.util.ArrayList;
 
-import controller.EntradaDatos;
-import dao.GestionInscripcion;
+import dao.InscripcionDao;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -12,9 +13,9 @@ import java.sql.SQLException;
 
 public class VistaInscripcion {
 
-	private GestionInscripcion gi;
+	private InscripcionDao gi;
 
-	public VistaInscripcion(GestionInscripcion gestionInscripcion) {
+	public VistaInscripcion(InscripcionDao gestionInscripcion) {
 		this.gi = gestionInscripcion;
 	}
 

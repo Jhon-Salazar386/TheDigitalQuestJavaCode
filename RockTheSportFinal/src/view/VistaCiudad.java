@@ -1,18 +1,18 @@
 package view;
 
 import model.Ciudad;
+import util.EntradaDatos;
 
 import java.io.*;
 import java.sql.*;
 
-import controller.EntradaDatos;
-import dao.GestionCiudades;
+import dao.CiudadDao;
 
 public class VistaCiudad {
 
-	private GestionCiudades gc;
+	private CiudadDao gc;
 
-	public VistaCiudad(GestionCiudades gestionCiudades) {
+	public VistaCiudad(CiudadDao gestionCiudades) {
 		this.gc = gestionCiudades;
 	}
 

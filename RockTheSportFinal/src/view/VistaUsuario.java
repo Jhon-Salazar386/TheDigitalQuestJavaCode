@@ -3,26 +3,27 @@ package view;
 import java.util.ArrayList;
 
 import controller.*;
-import dao.GestionCiudades;
-import dao.GestionDeportistas;
-import dao.GestionEventoDeportivo;
-import dao.GestionInscripcion;
+import dao.CiudadDao;
+import dao.DeportistaDao;
+import dao.EventoDeportivoDao;
+import dao.InscripcionDao;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Date;
 
 import model.*;
+import util.EntradaDatos;
 
 public class VistaUsuario {
 
-	private GestionEventoDeportivo eventos;
-	private GestionDeportistas deportistas;
-	private GestionInscripcion inscripciones;
-	private GestionCiudades ciudades;
+	private EventoDeportivoDao eventos;
+	private DeportistaDao deportistas;
+	private InscripcionDao inscripciones;
+	private CiudadDao ciudades;
 
-	public VistaUsuario(GestionEventoDeportivo eventos, GestionDeportistas deportistas,
-			GestionInscripcion inscripciones, GestionCiudades ciudades) {
+	public VistaUsuario(EventoDeportivoDao eventos, DeportistaDao deportistas,
+			InscripcionDao inscripciones, CiudadDao ciudades) {
 		this.eventos = eventos;
 		this.deportistas = deportistas;
 		this.inscripciones = inscripciones;

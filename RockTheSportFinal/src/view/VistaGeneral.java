@@ -4,16 +4,17 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import controller.*;
-import dao.GestionCiudades;
-import dao.GestionDeportistas;
-import dao.GestionEventoDeportivo;
-import dao.GestionInscripcion;
+import dao.CiudadDao;
+import dao.DeportistaDao;
+import dao.EventoDeportivoDao;
+import dao.InscripcionDao;
+import util.EntradaDatos;
 
 public class VistaGeneral {
 
 	private VistaOrganizador vistaOrganizador = new VistaOrganizador();
-	private VistaUsuario VistaUsuario = new VistaUsuario(new GestionEventoDeportivo(), new GestionDeportistas(),
-			new GestionInscripcion(), new GestionCiudades());
+	private VistaUsuario VistaUsuario = new VistaUsuario(new EventoDeportivoDao(), new DeportistaDao(),
+			new InscripcionDao(), new CiudadDao());
 
 	public void menuGeneral() throws SQLException, IOException {
 

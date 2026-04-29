@@ -1,19 +1,19 @@
 package view;
 
 import model.*;
+import util.EntradaDatos;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import controller.EntradaDatos;
-import dao.GestionEventoDeportivo;
+import dao.EventoDeportivoDao;
 
 public class VistaEventoDeportivo {
 
-	private GestionEventoDeportivo ge;
+	private EventoDeportivoDao ge;
 
-	public VistaEventoDeportivo(GestionEventoDeportivo gestionEvento) {
+	public VistaEventoDeportivo(EventoDeportivoDao gestionEvento) {
 		this.ge = gestionEvento;
 	}
 

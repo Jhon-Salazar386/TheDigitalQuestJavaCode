@@ -1,4 +1,4 @@
-package util;
+package dao;
 
 import java.sql.*;
 import java.io.*;
@@ -7,7 +7,7 @@ import db.Conector;
 import log.FicheroLog;
 import model.*;
 
-public class GestionEventoDeportivo {
+public class EventoDeportivoDao {
 
 	// Inserta el evento base(clase padre)
 	public int insertarEventoDeportivo(EventoDeportivo e) throws SQLException, IOException {

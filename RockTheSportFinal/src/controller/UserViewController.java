@@ -6,32 +6,36 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import dao.GestionEdiciones;
-import dao.GestionInscripcion;
+
+import dao.DeportistaDao;
+import dao.EdicionDao;
+import dao.InscripcionDao;
 import model.Edicion;
 import model.Inscripcion;
 import view.MisInscripcionesView;
-import view.RegisterView;
+import view.UserRegistrationView;
+import view.UserLoginView;
 import view.UserView;
 
 public class UserViewController {
 
-	private UserView view;
-	private GestionEdiciones gestorEdiciones;
-	private GestionInscripcion gestorInscripcion;
+	private UserView userView;
+	private EdicionDao gestorEdiciones;
+	private InscripcionDao gestorInscripcion;
 
-	public UserViewController(UserView view, GestionEdiciones gestorEdiciones, GestionInscripcion gestorInscripcion) throws SQLException, IOException {
-		this.view = view;
+	public UserViewController(UserView userView, EdicionDao gestorEdiciones, InscripcionDao gestorInscripcion) throws SQLException, IOException {
+		this.userView = userView;
 		this.gestorEdiciones = gestorEdiciones;
 		this.gestorInscripcion = gestorInscripcion;
 
-		view.getListaEdiciones().addListSelectionListener(new ListSelectionListener() {
+		userView.getListaEdiciones().addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
 				if (!e.getValueIsAdjusting()) {
-					Edicion edicion = view.getListaEdiciones().getSelectedValue();
+					Edicion edicion = userView.getListaEdiciones().getSelectedValue();
 
 					String[] opciones = {"Inscribirse", "Cerrar"};
 
@@ -51,7 +55,7 @@ public class UserViewController {
 			}
 		});
 
-		view.getBotonBuscar().addActionListener(new ActionListener() {
+		userView.getBotonBuscar().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
@@ -74,37 +78,48 @@ public class UserViewController {
 			}
 		});
 
-		view.getBotonRegistrarse().addActionListener(new ActionListener() {
+		userView.getBotonRegistrarse().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				new RegisterView();
+				
+				UserRegistrationView userRegistrationView = new UserRegistrationView();
+				UserRegistrationController registerFormViewController = new UserRegistrationController(userRegistrationView, new DeportistaDao());
+				registerFormViewController.iniciar();
+				
+				userView.dispose();
 
 			}
 		});
 
-		view.getBotonMisInscripciones().addActionListener(new ActionListener() {
+		userView.getBotonMisInscripciones().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
-					new MisInscripcionesViewController(new MisInscripcionesView(), new GestionInscripcion());
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
+				
+				UserLoginViewController loginViewController = new UserLoginViewController(new UserLoginView(), new DeportistaDao());
+				loginViewController.iniciar();
+				
+				userView.dispose();
 			}
 		});
 
-		datosEdiciones();
-
-		view.getBotonSalir().addActionListener(new ActionListener() {
+		userView.getBotonSalir().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				view.dispose();
+				userView.dispose();
 			}
 		});
 
+		SwingUtilities.invokeLater(() -> {
+			try {
+				datosEdiciones();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		});
+		
 	}
 
 	public ArrayList<Edicion> datosEdiciones() throws SQLException, IOException {
@@ -142,7 +157,7 @@ public class UserViewController {
 		ArrayList<Edicion> edicionesFiltradas = gestorEdiciones.mostrarEdicionesPorNombre(nombre);
 
 		if (edicionesFiltradas.size() < 1) {
-			JOptionPane.showMessageDialog(view, "No hay ninguna edicion con ese id");
+			JOptionPane.showMessageDialog(userView, "No hay ninguna edicion con ese id");
 			return;
 		}
 
@@ -151,11 +166,10 @@ public class UserViewController {
 
 	public void cargarEdiciones(ArrayList<Edicion> ediciones) {
 
-		view.getModeloEdicion().removeAllElements();
-		;
+		userView.getModeloEdicion().removeAllElements();;
 
 		for (Edicion e : ediciones) {
-			view.getModeloEdicion().addElement(e);
+			userView.getModeloEdicion().addElement(e);
 		}
 
 	}
@@ -164,10 +178,19 @@ public class UserViewController {
 		
 		String dni = JOptionPane.showInputDialog("Ingrese su dni");
 		
+		if(dni == null || dni.isBlank()) {
+			JOptionPane.showMessageDialog(userView, "Se ha cancelado");
+			return;
+		}
+		
 		Inscripcion inscripcion = new Inscripcion(dni, edicion.getId());
 		
 		gestorInscripcion.insertar(inscripcion);
 		
+	}
+	
+	public void iniciar() {
+		userView.setVisible(true);
 	}
 
 }

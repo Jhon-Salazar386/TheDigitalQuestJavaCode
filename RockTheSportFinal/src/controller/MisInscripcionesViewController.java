@@ -7,17 +7,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
-import dao.GestionInscripcion;
+import dao.EdicionDao;
+import dao.InscripcionDao;
 import model.Inscripcion;
+import model.UserSession;
 import view.MisInscripcionesView;
+import view.UserView;
 
 public class MisInscripcionesViewController {
 	
 	private MisInscripcionesView misInscripcionesView;
-	private GestionInscripcion gestorInscripciones;
+	private InscripcionDao gestorInscripciones;
 	
-	public MisInscripcionesViewController(MisInscripcionesView misInscripcionesView, GestionInscripcion gestorInscripcion) throws SQLException, IOException {
+	public MisInscripcionesViewController(MisInscripcionesView misInscripcionesView, InscripcionDao gestorInscripcion) throws SQLException, IOException {
 		this.misInscripcionesView = misInscripcionesView;
 		this.gestorInscripciones = gestorInscripcion;
 		
@@ -41,20 +45,40 @@ public class MisInscripcionesViewController {
 			}
 		});
 		
-		misInscripcionesView.getBotonSalir().addActionListener(new ActionListener() {
+		misInscripcionesView.getBotonVolver().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					UserViewController userViewContoller = new UserViewController(new UserView(), new EdicionDao(), new InscripcionDao());
+					userViewContoller.iniciar();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				
 				misInscripcionesView.dispose();
 			}
 		});
 		
-		obtenerInscripciones();
+		SwingUtilities.invokeLater(() -> {
+			try {
+				obtenerInscripciones();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		});
+		
+		
 		
 	}
 	
 	public void obtenerInscripciones() throws SQLException, IOException {
 		
-		ArrayList<Inscripcion> inscripciones = gestorInscripciones.mostrarInscripcionesPorDni("40000003C");
+		ArrayList<Inscripcion> inscripciones = gestorInscripciones.mostrarInscripcionesPorDni(UserSession.getDni());
 		
 		cargarInscripciones(inscripciones);
 		
@@ -93,6 +117,10 @@ public class MisInscripcionesViewController {
 			JOptionPane.showMessageDialog(misInscripcionesView, "Debes seleccionar una inscripcion");
 		}
 		
+	}
+	
+	public void iniciar() {
+		misInscripcionesView.setVisible(true);
 	}
 
 }

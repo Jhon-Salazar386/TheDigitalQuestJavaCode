@@ -9,13 +9,14 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import controller.UserViewController;
-import dao.GestionEdiciones;
-import dao.GestionInscripcion;
+import dao.EdicionDao;
+import dao.InscripcionDao;
 
 public class RockTheSportApp {
 
 	public static void main(String[] args) throws SQLException, IOException {
 
+		
 		VistaGeneral generalView = new VistaGeneral();
 		
 		try {
@@ -26,14 +27,12 @@ public class RockTheSportApp {
 			
 			UserView userView = new UserView();
 			
-			UserViewController controller = new UserViewController(userView, new GestionEdiciones(), new GestionInscripcion());
-			
-			VistaGeneral vista = new VistaGeneral();
-			vista.menuGeneral();
-			
-			Conector.cerrarConexion();
+			UserViewController controller = new UserViewController(userView, new EdicionDao(), new InscripcionDao());
+			controller.iniciar();
+						
+			/*Conector.cerrarConexion();
 
-			FicheroLog.cerrarBufferedWriter();
+			FicheroLog.cerrarBufferedWriter();*/
 
 		} catch (IOException io) {
 			System.out.println("Error en la entrada/salida de datos" + io.getMessage());
